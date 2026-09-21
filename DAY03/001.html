@@ -3,9 +3,31 @@
         <title>Registration Form</title>
     </head>
     <body>
-        
-       <form action="codefile.jsp" method="post">
-        
-       </form>
+        <center>
+        <table border="2px">
+            <thead >
+                <tr ><th colspan="4">Registration Form</th></tr>
+            </thead>
+            <tbody>
+                <form action="codefile.jsp" method="post">
+                <tr>
+                    <td colspan="2">Name:</td>
+                    <td colspan="2"><input type="text" ></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Age:</td>
+                    <td colspan="2"><input type="number" min="18" max="60"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>Male<input type="radio" value="1" ></td>
+                    <td>Female<input type="radio" value="2"></td>
+                    <td>Other<input type="radio" value="3"></td>
+                </tr>
+                </form>
+            </tbody>
+        </table>
+      
+       </center>
     </body>
 </html>
