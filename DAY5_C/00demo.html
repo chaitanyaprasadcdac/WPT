@@ -106,6 +106,42 @@
 
        //done fun as param and those func too have param!
 
+       //8. Creating a class with literal
+
+       var class1={mem1:"id",mem2:"name",method1:function (){console.log("I am method1"); console.log("Data members are:"+this.mem1+this.mem2);}}//object of class direct created
+       class1.method1();
+       //error face in method u need to give this dont forget.
+       //Inheritance:
+
+       var class1_child={};
+       console.log( class1_child.__proto__);
+       class1_child.__proto__=class1;
+       class1_child.method1();
+       console.log( class1_child.__proto__);
+
+
+       //9. class creatinon as func as constructor
+
+       var harsh = function (mem1,mem2,mem3){
+         
+
+            this.mem1=mem1;
+            this.mem2=mem2;
+            this.mem3=mem3;
+        
+       
+    
+        this.method1=function(){
+            console.log(this.mem1+this.mem2+this.mem3);
+        };
+       };
+
+       var h1= new harsh("data1","data2","data3");
+       var h2= new harsh("data1","data2","data3");
+
+       h1.method1();
+
+       
 
     </script>
 </body>
