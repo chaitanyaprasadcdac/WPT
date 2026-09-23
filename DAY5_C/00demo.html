@@ -51,14 +51,39 @@
        //6.function as return type
       
 
-       function person(){
+       function person(p){
+
+        if(p==1){
          var chaitu = function(){
         console.log("im  FUN ");
+        
        }
+       console.log(chaitu.__proto__);
         return chaitu;
+                }
+        else{
+            var chaitu = function(){
+        console.log("im  FUN ");
+        
        }
-       var c=person();
-       c();
+       console.log(chaitu.__proto__);
+        return chaitu;
+        }
+        
+        
+       }
+       var c=person(1);
+       var d=person(1);
+       //c();//without () the c never returns
+       console.log(c.__proto__);
+       console.log(d.__proto__);
+       if(c===d){
+       
+        console.log("FUNC=FUNC");
+       }
+       else{
+        console.log("Bro its not same!");
+       } //func never same even if same! and even if  var is same.
 
     </script>
 </body>
