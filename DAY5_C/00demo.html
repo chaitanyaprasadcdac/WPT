@@ -49,10 +49,16 @@
        av();
 
        //6.function as return type
-       var chaitu = function(){
-        console.log();
-       }
+      
 
+       function person(){
+         var chaitu = function(){
+        console.log("im  FUN ");
+       }
+        return chaitu;
+       }
+       var c=person();
+       c();
 
     </script>
 </body>
