@@ -83,7 +83,29 @@
        }
        else{
         console.log("Bro its not same!");
-       } //func never same even if same! and even if  var is same.
+       } //func never same even if same! and even if  var is same. as memeory adress is chkd
+
+       //7.FUnction as a param!
+
+       var fun1 = function (k){
+        console.log(k);
+       }
+
+       var fun2 = function (l){
+        console.log(l);
+       }
+
+       function acceptor(a,pa,b,pb){
+        console.log("Calling a");
+        a(pa);
+        console.log("Calling b");
+        b(pb);
+       }
+
+       acceptor(fun1,"iamparam1",fun2,"Iamparam2");
+
+       //done fun as param and those func too have param!
+
 
     </script>
 </body>
