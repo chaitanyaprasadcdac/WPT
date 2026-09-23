@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+    
+    <title>Demo</title>
+</head>
+<body>
+    <script>
+        //console.log(y);
+       //y=10;---> this gives error not defined ,we had undefined.
+        //basic hoisting
+        console.log(x);
+        var x=100;
+        console.log(x);
+        
+        y=10;
+        console.log(y);//this works??
+        
+        //2.using let
+        //console.log(z);// we cannot acess bfrore initalization.
+
+        let z=55;
+        console.log(z);
+        //3. let to be used in function only!
+        sayhi();
+        function sayhi(){
+        var x="im hi";
+        console.log(x);// same func also does hoisting this works
+        }
+
+        //3-> more line code
+        //  saybye();
+        //  var saybye= function(){
+        //     console.log("say byeee!")
+        //  }; this doesnt work as its not defined var case!
+
+
+        
+
+        //4.const
+        //const y;//cannot just declare a xonst
+        const y1=55; //even if dint consol log the y it prinnted  automatically
+        //console.log(y1);
+
+        //5. func as a variable av();
+        var av = function(){
+            console.log("iam av")
+        };
+       av();
+
+       //6.function as return type
+       var chaitu = function(){
+        console.log();
+       }
+
+
+    </script>
+</body>
+</html>
