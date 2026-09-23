@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <style>
+    .AStyle{
+    height:400px;
+    width:400px;
+      background-image: linear-gradient(white, blue);
+    margin: auto;
+    padding: 10px;
+    border-width: 9px;
+    border-color: black;
+    border-style: solid;
+}
+    .btn{
+        height: auto;
+        width: auto;
+        align-items: center;
+        margin:auto;
+        padding: 10px;
+        background-color: aquamarine;
+        border-width: 8px;
+        border-style: groove;
+    }
+    </style>
+    
+    <form action="http://127.0.0.1:5500/codefile.jsp" method="post">
+        <div class="Astyle">
+      <center>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>
+                <input type="text" name="txtName" required />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Age</td>
+              <td>
+                <input type="number" min="18" max="60" name="txtAge" required />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Email</td>
+              <td>
+                <input type="email" name="txtEmail" required />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Gender</td>
+              <td>
+                <input type="radio" name="rdbGender" value="1" /> Female
+                <input type="radio" name="rdbGender" value="2" /> Male
+                <input type="radio" name="rdbGender" value="3" /> Other
+              </td>
+            </tr>
+
+            <tr>
+              <td>Country</td>
+              <td>
+                <select name="cmbCountry">
+                  <option value="1">India</option>
+                  <option value="2">UK</option>
+                  <option value="3">USA</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Notify Me About:</td>
+              <td>
+                <input type="checkbox" name="chk1" /> Events
+                <input type="checkbox" name="chk2" /> News
+                <input type="checkbox" name="chk3" /> Offers
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                
+                <input type="submit" value="Register" name="btnRegister" class="btn">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+      </div>
+    </form>
+  </body>
+</html>
