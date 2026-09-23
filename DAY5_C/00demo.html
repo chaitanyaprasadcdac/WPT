@@ -5,6 +5,9 @@
     <title>Demo</title>
 </head>
 <body>
+    <div id="div1"></div>
+    <hr>
+    <input type="button" value="none" onclick="change()">
     <script>
         //console.log(y);
        //y=10;---> this gives error not defined ,we had undefined.
@@ -140,9 +143,32 @@
        var h2= new harsh("data1","data2","data3");
 
        h1.method1();
+       h2.method1();
 
-       
+       //10. using class key word
+       class human{
+        constructor(a,b){
+            this.a=a;
+            this.b=b;
+            this.methd=function(){
+                console.log("Hehehe:"+this.a+this.b);
+            }
+        }
+        
+       }
 
+       var man1 = new human("bro","ahem ");
+       man1.methd();
+       var val=0;
+       var dep=document.getElementById("div1");
+      
+       function change(){
+        val=val+1;
+        dep.innerText=val;
+
+       }
+       //setInterval(change,1000);
+       clearInterval(8000);
     </script>
 </body>
 </html>

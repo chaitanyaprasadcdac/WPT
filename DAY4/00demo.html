@@ -10,14 +10,19 @@
     <hr>
     <input type="button" value="Ahead" onclick="run(1)" >
     <input type="button" value="Back" onclick="run(0)" >
+    <input type="button" value="Autorun" onclick="autorun()" >
     <script>
         var dist =0;
 
         function run(par){
             var obj=document.getElementById("car");
             obj.style.marginLeft=dist+"px";
-            if(par==1)dist+=10; 
-            else dist-=10;
+            if(par==1)dist-=10; 
+            else dist+=10;
+        }
+
+        function autorun(){
+            setInterval(run,100);
         }
     </script>
 </body>
