@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Latitude:<input type="text" id="textlat" name="txtlat" value="">
+    Longitude:<input type="text" id="textlon" name="txtlon" value="">
+    <input type="button" value="getloc" onclick="callme()">
+    <a target="_blank" href="https//www.latlong.net/c/?lat=18.643817&long=73.756923" id="txtmap">Click to see map!</a>
+    <script>
+        function callme(){
+            navigator.geolocation.getCurrentPosition(sucessmsg,errmsg);
+        }
+        var v1=document.getElementById("textlat");
+        var v2=document.getElementById("textlon");
+        var v3=document.getElementById("txtmap");
+       
+        function sucessmsg(msg){
+            v1.value=msg.coords.latitude;
+            v2.value=msg.coords.longitude;
+           v3.href="https://www.latlong.net/c/?lat="+v1.value+"&long="+v2.value;
+            // console.log("meow mowmewo meow ! sucess ful!");
+            // console.log(msg);
+        }
+        
+        function errmsg(msg){
+             console.log("DIeee");
+             console.log(msg);
+        }
+         
+         
+    </script>
+</body>
+</html>
