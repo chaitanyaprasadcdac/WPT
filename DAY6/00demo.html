@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Latitude : <input type="text" name="lat" id="lat" value="">
+    <br>
+    Longitude : <input type="text" name="lon" id="lon" value="">
+    <br>
+    <input type="button" value="Submit" onclick="save()">
+    <script>
+        var obj1=document.getElementById("lat");
+        var obj2=document.getElementById("lon");
+
+        
+
+        function save(){
+            var la=obj1.value;
+            var lo=obj2.value;
+            localStorage.setItem("Latitude",la);
+            localStorage.setItem("Longitude",lo);
+        }
+    </script>
+</body>
+</html>

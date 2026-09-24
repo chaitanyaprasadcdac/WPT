@@ -12,11 +12,13 @@
         //console.log(y);
        //y=10;---> this gives error not defined ,we had undefined.
         //basic hoisting
-        console.log(x);
-        var x=100;
-        console.log(x);
-        
-        y=10;
+        // console.log(x);
+        // var x=100;
+        // console.log(x);
+        //console.log(y);
+        y="str";
+
+        console.log(y.__proto__);
         console.log(y);//this works??
         
         //2.using let
@@ -168,7 +170,7 @@
 
        }
        //setInterval(change,1000);
-       clearInterval(8000);
+    //    clearInterval(8000); here 
     </script>
 </body>
 </html>
