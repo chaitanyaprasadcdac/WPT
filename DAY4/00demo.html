@@ -11,18 +11,34 @@
     <input type="button" value="Ahead" onclick="run(1)" >
     <input type="button" value="Back" onclick="run(0)" >
     <input type="button" value="Autorun" onclick="autorun()" >
+     <input type="button" value="Stop" onclick="breakk()" >
     <script>
         var dist =0;
-
+        var arr = new Array();
+       
         function run(par){
             var obj=document.getElementById("car");
             obj.style.marginLeft=dist+"px";
             if(par==1)dist-=10; 
             else dist+=10;
+             console.log(dist);
+            if(dist>900){
+            breakk();}
         }
 
         function autorun(){
-            setInterval(run,100);
+            var qid=setInterval(run,100);
+            arr.push(qid);
+           
+            
+        }
+
+        
+
+        function breakk(){
+            for (let index = 0; index < arr.length; index++) {
+                clearInterval(arr[index]);
+            }
         }
     </script>
 </body>
