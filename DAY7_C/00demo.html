@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="can1" style="width: auto; background-color: aquamarine;">This Canvas doesnot SUppourt ypur browser please upgrade!</canvas>
+    <hr>
+    <input type="button" value="Draw" onclick="draw()">
+    <input type="button" value="AutoDraw" onclick="autodraw()">
+    <script>
+        var x1=0;
+        var y1=0;
+        var x2=0;
+        var y2=0;
+        var reftocan=document.getElementById("can1");
+        function autodraw(){
+            setInterval(draw,100);
+        }
+        function draw(){
+
+            var obj = reftocan.getContext("2d");
+            obj.moveTo(x1,y1);
+            obj.lineTo(x2,y2);
+            obj.stroke();
+
+            x1=x2;
+            y1=y2;
+            x2=x2+5
+            y2=Math.floor(Math.random()*100);
+        }
+    </script>
+</body>
+</html>
