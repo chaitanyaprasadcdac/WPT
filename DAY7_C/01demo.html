@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="GetData" onclick="callme()">
+    <hr>
+    <div id="container">
+       
+    </div>
+    <script>
+        //xhr
+        var helper =null;
+        function callme(){
+        helper = new XMLHttpRequest();
+        helper.readyState;
+        helper.onreadystatechange=callfun;
+        helper.open("GET","https://dummyjson.com/carts");
+        helper.send();}
+
+        //debugger;
+        function callfun(){
+        if(helper.readyState==4){
+            var textdata =helper.responseText;
+            var dataobj =JSON.parse(textdata);
+            var cont = document.getElementById("container")
+            console.log(dataobj);
+            for(i=0;i<dataobj.carts.length;i++){
+                for(j=0;j<dataobj.carts[i].products.length ;j++){
+                    
+                    cont.innerHTML+=` <div><center>
+            <table>
+                
+                    <tr><img src=${dataobj.carts[i].products[j].thumbnail} alt=""></tr>
+                   
+                    
+                         <br>
+                        <tr>Item Name:${dataobj.carts[i].products[j].title}</tr>
+                     <br>
+                   <tr> Item Price:${dataobj.carts[i].products[j].price}</tr>
+                      <br>
+                   <tr>  <a target="_blank" href="https://www.flipkart.com/search?q=${dataobj.carts[i].products[j].title}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off">
+       <input type="button" value="Buy Now" ></a></tr>
+                    
+                
+            </table>
+        </center>
+            
+        </div>
+        <hr>`
+                }
+                
+
+            }
+        }}
+        
+        
+
+    </script>
+</body>
+</html>
