@@ -1,0 +1,33 @@
+.SocialMediaIcon {
+    height: 50px;
+    width: 50px;
+}
+
+.ContentPlaceHolder {
+    width: 98%;
+    /* border: 2px solid brown; ctrl+k+c /u*/
+    border-width: 2px;
+    border-color: brown;
+    border-style: solid;
+    margin: 5px;
+}
+
+.adImage {
+    height: 50px;
+    width: 100%;
+}
+
+.adContainer {
+    height: 50px;
+    width: 100%;
+    background-color: blanchedalmond;
+    border: 2px solid brown;
+}
+.logo{
+    height:100px;
+    width:100px;
+}
+
+.rootContainer{
+    margin: 10px; width: 98%; border: 5px solid black; padding: 5px;
+}
