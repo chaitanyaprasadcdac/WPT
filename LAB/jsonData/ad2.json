@@ -1,0 +1,12 @@
+[
+    {
+        "No": 1,
+        "AdImageUrl": "http://127.0.0.1:5500/images/ycp.png",
+        "LinkToNavigateTo": "https://yccait.org/"
+    },
+    {
+        "No": 2,
+        "AdImageUrl": "http://127.0.0.1:5500/images/vita.png",
+        "LinkToNavigateTo": "https://vidyanidhi.com"
+    }
+]

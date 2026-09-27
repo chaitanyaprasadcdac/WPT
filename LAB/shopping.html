@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <audio src="dont-talk-315229.mp3" ></audio>
+    <div id="rootcontainer" class="rootContainer">
+
+        <img src="images/logo.png" alt="logo" class="imgContainer" id="timepass">
+        <hr>
+        <a href="shopping.html">Shopping</a> |&nbsp;
+        <a href="billing.html">Billing</a> |&nbsp;
+        <a href="http://127.0.0.1:5500/LAB/about.html">About</a> |&nbsp;
+        <hr>
+        <div id="addiv"  style="background-color: rgb(177, 115, 22); height: 100px;">
+            <table >
+                <tr>
+                    <td>
+                       <a href="https://iacsd.com" id="imglink"><img src="images/logo.png" alt="Advertisement" class="imgContainer" id="tableadd"></a> 
+                    </td>
+                    <td>Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ipsam vero dolorum voluptates commodi earum neque quos omnis fugit veniam placeat illo natus, et soluta labore necessitatibus ad animi suscipit.</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+<script>
+    var userlocation=window.navigator.geolocation.getCurrentPosition(sucessl,errorl);
+    var userlat=0;
+    var userlon=0;
+    function sucessl(result){
+        console.log("Bhai location milgye!");
+        userlat=result.coords.latitude;
+        userlon=result.coords.longitude;
+    }
+    function errorl(msg){
+        console.log("Bhai kuch to error hein location ka!");
+    }
+    var response=localStorage.getItem("logged");
+    console.log(response);
+    console.log(typeof(response));
+    
+    if(response==null || response==undefined || response=="false"){
+        alert("Bhai hacker hein kya tu??");
+        window.location.href="login.html";
+    
+    }
+
+    var helper = new XMLHttpRequest();
+   
+    function adddata(){
+        var loc=null;
+        helper.onprogress=addshow;
+        userlat=Math.ceil(userlat);
+        console.log(userlat);
+        if((userlat)==19 && Math.ceil(userlon)==74){
+            loc="ad1.json";
+        }
+        else{
+            loc="ad2.json";
+        }
+        debugger;
+        var link="http://127.0.0.1:5500/LAB/jsonData/"+loc;
+        helper.open("GET",link);
+        
+        helper.send();
+    }
+
+     
+     var textdata;
+    function addshow(){
+        if(helper.status==200 && helper.readyState>=3){
+            console.log("Bhai hecker hein tu!");
+            textdata=helper.responseText;
+            console.log(textdata);
+            var dataobj=JSON.parse(textdata);
+            var count=0;
+            var objtp=document.getElementById("tableadd");
+            var objlnk=document.getElementById("imglink")
+            function dataloop(){
+                console.log(count);
+                if(count>dataobj.length-1){
+                    count=0;
+                }
+                 console.log(count);
+                objtp.src=dataobj[count].AdImageUrl;
+                objlnk.href=dataobj[count].LinkToNavigateTo;
+                count+=1;
+                console.log(count);
+                
+
+            }
+
+            setInterval(dataloop,5000);
+           
+            
+        }
+    
+    }
+    
+adddata();
+advisible();
+    
+</script>
+</html>

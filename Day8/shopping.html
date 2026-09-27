@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div id="container" class="rootContainer">
+        <img src="images/logo.png" alt="logo" class="logo">WELOCME TO THE SHOPPING CART
+        <hr>
+        <a href="shopping.html">Go Shopping</a> | &nbsp;
+        <a href="billing.html" onclick="Bill()">Billing</a> | &nbsp;
+        <a href="about.html">About</a> | &nbsp;
+        <hr>
+        <input type="button" value="Check out" id="buttoncheckout" onclick="checkout()" style="">
+        <hr>
+        <div id="adDiv" class="adContainer">
+            <img src="#" class="adImage" alt="Advertisment">
+        </div>
+        <hr>
+        <div id="pageContentPlaceHolder" class="ContentPlaceHolder"></div>
+        <hr>
+    </div>
+    <center>
+        <h4>Developed By IACSD 2026</h4>
+        <a href="www.linkedin.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+        <a href="www.facebook.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+
+        <a href="www.instagram.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+
+        <a href="www.twitter.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+
+    </center>
+    <hr>
+    <script>
+
+        var helper = new XMLHttpRequest();
+        var productArr = [];
+        function addtocart(pid, pname, pprice) {
+            
+            var prod = { "ID": pid, "Name": pname, "Price": pprice }
+            productArr.push(prod);
+            console.log(productArr);
+        }
+
+        function getproducts() {
+            helper.onreadystatechange = UponReadyStateChange;
+            helper.open("GET", "https://dummyjson.com/products");
+            helper.send();
+        }
+        function UponReadyStateChange() {
+            if (helper.readyState == 4 && helper.status == 200) {
+                var responsefromserver = JSON.parse(helper.responseText);
+                var products = responsefromserver.products;
+                var obj = document.getElementById("pageContentPlaceHolder");
+                for (i = 0; i < products.length; i++) {
+                    var product = products[i];
+                    var productui = `<div id="t" class="ContentPlaceHolder">
+        <table border="1" style="width: 98%; margin: 5px;">
+            <tbody>
+                <tr>
+                    <td style="width: 100px;"><img
+                            src="${product.thumbnail}"
+                            alt="${product.title}" style="height: 100px; width: 100px;"></td>
+                    <td>
+                        <table border="1" style="width: 50%;">
+                             <tr>
+                                <td style="font-weight: bold;">Product ID</td>
+                                <td>${product.id}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Product</td>
+                                <td>${product.title}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Description</td>
+                                <td>
+                                    <p>${product.description}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Price</td>
+                                <td>${product.price}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Rating</td>
+                                <td>${product.rating}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="padding: 10px;"><input id="btn" type="button" value="Add To Cart" onclick="addtocart(${product.id},'${product.title}' ,${product.price})"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>`;
+                    obj.innerHTML = obj.innerHTML + productui;
+                }
+            }
+        }
+        getproducts();
+
+        
+       function checkout(){
+        for(i=0;i<productArr.length;i++){
+            if(productArr.length>0){
+            localStorage.setItem("ProductsPurchased",JSON.stringify(productArr));
+            window.location.href="billing.html";
+        }
+        else {
+            alert("You need to purchase something to ??!");
+        }
+       }}
+
+
+    </script>
+</body>
+
+</html>

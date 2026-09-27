@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div id="container" class="rootContainer">
+        <img src="images/logo.png" alt="logo" class="logo">WELOCME TO THE SHOPPING CART
+        <hr>
+        <a href="shopping.html">Go Shopping</a> | &nbsp;
+        <a href="billing.html">Billing</a> | &nbsp;
+        <a href="about.html">About</a> | &nbsp;
+        <hr>
+        <div id="adDiv" class="adContainer" >
+            <img src="#" class="adImage" alt="Advertisment">
+        </div>
+        <hr>
+        Your Bill
+        <hr>
+        <div id="pageContentPlaceHolder" class="ContentPlaceHolder">
+           <center> <table id="billiingtable" border="1" style="width: 400px; text-align: center;">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                    </tr>
+                </thead>
+                <tbody id="billingtbody">
+                    
+
+                </tbody>
+            </table></center>
+
+            <div id="divtotal" style="background-color: bisque ; text-align: center;">
+                
+            </div>
+        </div>
+        <hr>
+    </div>
+    <center>
+            <h4>Developed By IACSD 2026</h4>
+            <a href="www.linkedin.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+            <a href="www.facebook.com"><img src="images/logo.png" class="SocialMediaIcon"alt=""></a> &nbsp;
+
+            <a href="www.instagram.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+
+            <a href="www.twitter.com"><img src="images/logo.png" class="SocialMediaIcon" alt=""></a> &nbsp;
+
+        </center>
+        <hr>
+        <script>
+            function showbill(){
+                var totobj = document.getElementById("divtotal");
+                var total=0;
+                var productdata=localStorage.getItem("ProductsPurchased");
+                if(productdata!=undefined && productdata!=null){
+
+                    var productdatastr=JSON.parse(productdata);
+                    var billtobj=document.getElementById("billingtbody");
+                    for(i=0;i<productdatastr.length;i++){
+                        var product=productdatastr[i];
+                        total=total+product.Price;
+                        var billui=`<tr>
+                        <td>${i+1}</td>
+                        <td>${product.Name}</td>
+                        <td>${product.Price}</td>
+                    </tr>`;
+                    billtobj.innerHTML=billtobj.innerHTML+billui;
+                    }
+                    total=Math.ceil(total);
+
+                    totobj.innerHTML=`<h2>Pleas Pay: ${(total)} INR</h2><input type="button" value="Pay" onclick="pay()">`
+
+                }
+                else{
+                    alert("Go purchase something first man!");
+                    window.location.href="billing.html"
+                }
+            }
+            showbill();
+
+            function pay(){
+                alert("Assuming You have paid redirecting you to shopping page!");
+                localStorage.removeItem("ProductsPurchased");
+                window.location.href="billing.html"
+            }
+        </script>
+</body>
+
+</html>

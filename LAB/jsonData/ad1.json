@@ -1,0 +1,12 @@
+[
+    {
+        "No": 1,
+        "AdImageUrl": "http://127.0.0.1:5500/images/iacsd.png",
+        "LinkToNavigateTo": "https://iacsd.com/"
+    },
+    {
+        "No": 2,
+        "AdImageUrl": "http://127.0.0.1:5500/images/acts.png",
+        "LinkToNavigateTo": "https://www.cdac.in"
+    }
+]
