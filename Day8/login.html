@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login To Get In</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div id="rootContainer">
+        <center>
+            <div class="rootContainer" style="margin: 100px; height: 500px; width: 500px;">
+
+                <img src="https://www.cdac.in/img/cdac-logo-sm.png" alt="cdaclogo">
+                <hr>
+                <br>
+                <br> <br>
+                Username:&nbsp;<input type="text" id="username">
+                <br>
+                <br> <br>
+
+                Password : <input type="password" id="password">
+                <br>
+                <br> <br>
+                <input type="button" value="Login" style="background-color:lightblue;" onclick="login()">
+        </center>
+        <script>
+            
+            var reftouser=document.getElementById("username");
+            var reftopass=document.getElementById("password");
+            function login(){
+                if(reftouser.value=="Vineet" && reftopass.value=="Chaitanya"){
+                    localStorage.setItem("logged",true);
+                    window.location.href="shopping.html";
+                }
+
+                else{
+                    alert("Bhai kya kr rha username password recheck kar!!");
+                    localStorage.setItem("logged",false);//value set was boolean false but when getting the value of key value pair in return got stirng!
+                }
+                }
+            
+        </script>
+    </div>
+    </div>
+
+</body>
+
+</html>

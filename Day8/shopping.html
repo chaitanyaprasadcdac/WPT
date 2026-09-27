@@ -16,10 +16,17 @@
         <a href="billing.html" onclick="Bill()">Billing</a> | &nbsp;
         <a href="about.html">About</a> | &nbsp;
         <hr>
-        <input type="button" value="Check out" id="buttoncheckout" onclick="checkout()" style="">
+        <input type="button" value="Check out" id="buttoncheckout" onclick="checkout()">
         <hr>
         <div id="adDiv" class="adContainer">
-            <img src="#" class="adImage" alt="Advertisment">
+            <table >
+                <tr>
+                    <td>
+                       <a href="#" id="imglink"><img src="" alt="Advertisement" class="imgContainer" id="tableadd" style="height: 40px; width: 300px;"></a> 
+                    </td>
+                    <td id="addescription" style="width: 100%px; height: 10px;"></td>
+                </tr>
+            </table>
         </div>
         <hr>
         <div id="pageContentPlaceHolder" class="ContentPlaceHolder"></div>
@@ -41,15 +48,15 @@
         var helper = new XMLHttpRequest();
         var productArr = [];
         function addtocart(pid, pname, pprice) {
-            
+
             var prod = { "ID": pid, "Name": pname, "Price": pprice }
             productArr.push(prod);
-            console.log(productArr);
+            
         }
 
         function getproducts() {
             helper.onreadystatechange = UponReadyStateChange;
-            helper.open("GET", "https://dummyjson.com/products");
+            helper.open("GET", "http://127.0.0.1:5500/Day8/jsonData/products.json");
             helper.send();
         }
         function UponReadyStateChange() {
@@ -104,17 +111,104 @@
         }
         getproducts();
 
-        
-       function checkout(){
-        for(i=0;i<productArr.length;i++){
-            if(productArr.length>0){
-            localStorage.setItem("ProductsPurchased",JSON.stringify(productArr));
-            window.location.href="billing.html";
-        }
+
+        function checkout() {
+           
+
+            if (productArr.length > 0) {
+                for (i = 0; i < productArr.length; i++) {
+                    localStorage.setItem("ProductsPurchased", JSON.stringify(productArr));
+                    window.location.href = "billing.html";
+                }}
         else {
-            alert("You need to purchase something to ??!");
+                    alert("You need to purchase something to ??!");
+                }
+            }
+        
+
+              var userlocation=window.navigator.geolocation.getCurrentPosition(sucessl,errorl);
+    var userlat=0;
+    var userlon=0;
+    function sucessl(result){
+       
+        userlat=result.coords.latitude;
+        userlon=result.coords.longitude;
+        console.log("inner"+userlat);
+        console.log("inner"+userlon);
+    }
+     
+    function errorl(msg){
+        console.log("Bhai kuch to error hein location ka!");
+    }
+    var response=localStorage.getItem("logged");
+   
+    
+    if(response==null || response==undefined || response=="false"){
+        alert("Bhai hacker hein kya tu??");
+        window.location.href="login.html";
+    
+    }
+
+    var helperr = new XMLHttpRequest();
+   
+    function adddata(){
+        console.log(userlat);
+        console.log(userlon);
+        var loc=null;
+        
+        helperr.onprogress=addshow;
+        userlat=Math.ceil(userlat);
+        console.log(userlat);
+        console.log(typeof(userlat))
+        if((userlat)==19 && Math.ceil(userlon)==74){
+            loc="ad1.json";
         }
-       }}
+        else{
+            loc="ad2.json";
+        }
+        
+        var link="http://127.0.0.1:5500/Day8/jsonData/"+loc;
+        helperr.open("GET",link);
+        
+        helperr.send();
+    }
+
+     
+     var textdata;
+    function addshow(){
+        if(helperr.status==200 && helperr.readyState>=3){
+            console.log("Bhai hecker hein tu!");
+            textdata=helperr.responseText;
+            console.log(textdata);
+            var dataobj=JSON.parse(textdata);
+            var count=0;
+            var objtp=document.getElementById("tableadd");
+            var objdesc = document.getElementById("addescription");
+            var objlnk=document.getElementById("imglink")
+            function dataloop(){
+                
+                if(count>dataobj.length-1){
+                    count=0;
+                }
+               
+                objtp.src=dataobj[count].AdImageUrl;
+                objlnk.href=dataobj[count].LinkToNavigateTo;
+                objdesc.innerText=dataobj[count].Description;
+                
+                count+=1;
+               
+                
+
+            }
+
+            setInterval(dataloop,5000);
+           
+            
+        }
+    
+    }
+    
+setTimeout(adddata,1000);
 
 
     </script>
