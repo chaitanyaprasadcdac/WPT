@@ -56,7 +56,7 @@
 
         function getproducts() {
             helper.onreadystatechange = UponReadyStateChange;
-            helper.open("GET", "http://127.0.0.1:5500/Day8/jsonData/products.json");
+            helper.open("GET", "jsonData/products.json");
             helper.send();
         }
         function UponReadyStateChange() {
@@ -167,7 +167,7 @@
             loc="ad2.json";
         }
         
-        var link="http://127.0.0.1:5500/Day8/jsonData/"+loc;
+        var link="jsonData/"+loc;
         helperr.open("GET",link);
         
         helperr.send();
