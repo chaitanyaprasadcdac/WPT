@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <header>
+            <img src="logo.png" alt="Bhai image load ho rhi hein" style="height: 100px; width: 100px;">
+            <hr>
+            <a onclick="change('home')">HOME</a> | &nbsp;
+            <a onclick="change('about')">ABOUT</a> | &nbsp;
+            <a onclick="change('contact')">CONACT</a> | &nbsp;
+            <a onclick="change('danger')">DANGER</a> | &nbsp;
+            <hr>
+        </header>
+        <div id="data">
+           
+    </div>
+
+        </div>
+       
+    <script>
+        var obj = document.getElementById("data");
+        function change(ch){
+             switch(ch){
+            case "home":
+                obj.innerHTML=`  <h2>HOME</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate fugiat inventore vero quam laboriosam at rerum aperiam ex ut. Cupiditate, doloremque recusandae! Iure quis sit doloremque libero numquam laborum.</p>`;
+                break;
+            case "about":
+                obj.innerHTML=` <h2>ABOUT</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate fugiat inventore vero quam laboriosam at rerum aperiam ex ut. Cupiditate, doloremque recusandae! Iure quis sit doloremque libero numquam laborum.</p>`;
+                break;
+            case "contact":
+                obj.innerHTML=` <h2>CONTACT</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate fugiat inventore vero quam laboriosam at rerum aperiam ex ut. Cupiditate, doloremque recusandae! Iure quis sit doloremque libero numquam laborum.</p>`;
+                break;
+            case "danger":
+                obj.innerHTML=` <h2>DANGER</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate fugiat inventore vero quam laboriosam at rerum aperiam ex ut. Cupiditate, doloremque recusandae! Iure quis sit doloremque libero numquam laborum.</p>`;
+                break;
+           default:
+                break;
+        }
+        }
+    </script>
+</body>
+</html>
