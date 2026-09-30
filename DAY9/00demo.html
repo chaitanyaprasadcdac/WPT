@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMISE</title>
+</head>
+<body>
+    <script>
+        function dsmthng(resolve,reject){
+            if(1==1){
+                resolve();
+            }
+            else{
+                reject();
+            }
+        }
+
+        function f1(){
+            console.log("I am F1");
+        }
+         function f2(){
+            if( setTimeout(f3,5000)){
+                console.log("I am F2");
+            }
+           
+            
+        }
+         function f3(){
+            console.log("I am F3");
+        }
+         function f4(){
+            console.log("I am error!");
+        }
+
+        var hlpr = new Promise(dsmthng) ;
+        hlpr.then(f1).then(f2).catch().then(f3).then(f1);
+
+
+        function prasad (id){
+            console.log("iD",id);
+        }
+    </script>
+</body>
+</html>
