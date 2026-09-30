@@ -1,35 +1,47 @@
 import { Component } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 class Home extends Component {
-    state = { emp:{No:0,Name:"Default",Address:"Pune" }} ;
-    chngAdd(){
+    state = { emp:{No:0,Name:"",Address:"" }} ;
+    chngdata(args){
+        debugger;
+        var changename=args.target.name;
+        console.log('im running on text box update')
+        // console.log(changename) 
+        var copyobj={...this.state.emp};
+        copyobj[changename]=args.target.value;
        
-        console.log("Balle balee function called!");
-        var tempdata = {...this.state.emp};
-        var copyobj = {...this.state.emp,Name:"Prashad"};
-        
         this.setState({emp:copyobj});
+        debugger;
     }
-    myflag=true;
-    componentDidMount(){
-        console.log("I am called only once!");
+    chngAdd(){
+        console.log(this.state.emp);
+        // console.log("Balle balee function called!");
+        // var copyobj = {...this.state.emp,Name:"Prashad"};
+        
+        // this.setState({emp:copyobj});
     }
+ 
 
-    
-    shouldComponentUpdate(){
-        console.log("Idk")
-        console.log(this.myflag);
-        return this.myflag;
-    }
 
     render() { 
         console.log("Render called;")
         return (<>
         <h1>Hello react dont react!</h1>
-        <h2>{this.state.emp.No}</h2>
-        <h2>{this.state.emp.Name}</h2>
-        <h2>{this.state.emp.Address}</h2>
-        <button   className="btn btn-primary"  onClick={()=>{this.chngAdd()}}> Click Me</button>
+        No:<input type="number" name="No" value={this.state.emp.No}  onChange={(event)=>{
+            this.chngdata(event);
+        }}/>
+        <hr />
+        Name:<input type="text" name="Name" value={this.state.emp.Name} onChange={(event)=>{
+            this.chngdata(event);
+        }}/>
+         <hr />
+        Adress<input type="text" name="Address" value={this.state.emp.Address} onChange={(event)=>{
+            this.chngdata(event);
+        }}/>
+         <hr />
+
+        <button   className="btn btn-primary"  onClick={(event)=>{
+            this.chngAdd(event)}}> Click Me</button>
         </>)
     }
 }
